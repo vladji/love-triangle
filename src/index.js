@@ -3,5 +3,19 @@
  * @returns number of love triangles
  */
 module.exports = function getLoveTrianglesCount(preferences = []) {
-  // your implementation
+  let sumPointTriangle;
+  let arrTriangles = [];
+  next:
+  for (let i = 0; i < preferences.length; i++) {
+    let elementOne = preferences[i];
+    let elementTwo = preferences[elementOne - 1];
+    let elementThr = preferences[elementTwo - 1];
+    if (elementThr == elementTwo) continue next;
+    if (elementThr === i + 1) {
+      sumPointTriangle = elementOne + elementTwo + elementThr;
+      if (arrTriangles.indexOf(sumPointTriangle) === -1)
+        arrTriangles.push(sumPointTriangle);
+    }
+  }
+return arrTriangles.length;
 };
